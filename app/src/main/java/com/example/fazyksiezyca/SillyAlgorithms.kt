@@ -115,4 +115,16 @@ class SillyAlgorithms {
         }
         return (100*z2)/15.0
     }
+
+    fun currentAlgorithm(year: Int, month: Int, day: Int): Double{
+        var s=0.0
+        when (PreservedSettings.Companion.globalAlgorithm){
+            "Trig2" -> s=Trig2(year, month, day)
+            "Trig1" -> s=Trig1(year, month, day)
+            "Conway" -> s=Conway(year, month, day)
+            "Simple" -> s=Simple(year, month, day)
+        }
+        return s
+    }
+
 }

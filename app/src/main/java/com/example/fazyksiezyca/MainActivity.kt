@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val algo=SillyAlgorithms()
-        val perzent=algo.toPercent(algo.Trig1(2021, 11, 20))
+        val perzent=algo.toPercent(algo.currentAlgorithm(2021, 11, 20))
         val heute = findViewById<TextView>(R.id.Today)
         heute.text=perzent.toString()
 
