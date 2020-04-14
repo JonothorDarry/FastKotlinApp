@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     fun ownCalFormatter(curcal: Calendar, full: Int=1, next: Int=1, place: TextView, custom_string: String="Watever: "){
         val myUtils=MoonGeta()
         val cal=myUtils.NextMoon(curcal.get(Calendar.YEAR), curcal.get(Calendar.MONTH), curcal.get(Calendar.DAY_OF_MONTH), full, next)
-        val myString=custom_string+"%d.%d.%d".format(cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR))
+        val myString=custom_string+"%d.%d.%d".format(cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH)+1, cal.get(Calendar.YEAR))
         place.text=myString
     }
 
@@ -35,22 +35,22 @@ class MainActivity : AppCompatActivity() {
         val imag=findViewById<ImageView>(R.id.blackSun)
         val res=algo.currentAlgorithm(year, month, day)
         if (PreservedSettings.Companion.globalHemisphere=="S"){
-            if (res>4 && res<12) imag.setImageResource(R.drawable.sw47_4)
-            else if (res>12 && res<18) imag.setImageResource(R.drawable.sw99_4)
-            else if (res>18 && res<25) imag.setImageResource(R.drawable.sz48_7)
+            if (res>4.5 && res<12.5) imag.setImageResource(R.drawable.sw47_4)
+            else if (res>12.5 && res<17.5) imag.setImageResource(R.drawable.sw99_4)
+            else if (res>17.5 && res<25.5) imag.setImageResource(R.drawable.sz48_7)
             else imag.setImageResource(R.drawable.sz0_1)
         }
         else if (PreservedSettings.Companion.globalHemisphere=="N"){
-            if (res>4 && res<12) imag.setImageResource(R.drawable.nw48_6)
-            else if (res>12 && res<18) imag.setImageResource(R.drawable.nw99_9)
-            else if (res>18 && res<25) imag.setImageResource(R.drawable.nz48)
+            if (res>=4.5 && res<12.5) imag.setImageResource(R.drawable.nw48_6)
+            else if (res>=12.5 && res<17.5) imag.setImageResource(R.drawable.nw99_9)
+            else if (res>=17.5 && res<25.5) imag.setImageResource(R.drawable.nz48)
             else imag.setImageResource(R.drawable.nz0_4)
         }
 
         val perzent=algo.toPercent(res)
 
         val heute = findViewById<TextView>(R.id.Today)
-        heute.text="Dziś, %d.%d.%d księżyc jest w %.2f procentach widoczny".format(cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR), perzent)
+        heute.text="Dziś, %d.%d.%d księżyc jest w %.2f procentach widoczny".format(cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH)+1, cal.get(Calendar.YEAR), perzent)
         ownCalFormatter(cal, 0, 1, findViewById<TextView>(R.id.NextNew), "Następny Nów: ")
         ownCalFormatter(cal, 0, 0, findViewById<TextView>(R.id.PrevNew), "Poprzedni Nów: ")
         ownCalFormatter(cal, 1, 0, findViewById<TextView>(R.id.PrevFull), "Poprzednia Pełnia: ")
