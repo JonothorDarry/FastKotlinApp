@@ -9,7 +9,7 @@ import kotlin.math.sin
 class SillyAlgorithms {
     fun Simple(year: Int, month: Int, day: Int): Double {
         val lp=2551443
-        val now= Date(year, month, day)
+        val now= Date(year, month-1, day)
         val newMoon=Date(1970, 1, 7, 20, 35, 0)
         val phase=((now.time-newMoon.time)/1000)%lp
         return floor(phase/(24.0*3600)) +1
