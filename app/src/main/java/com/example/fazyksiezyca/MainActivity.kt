@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     fun ownCalFormatter(curcal: Calendar, full: Int=1, next: Int=1, place: TextView, custom_string: String="Watever: "){
         val myUtils=MoonGeta()
-        val cal=myUtils.NextMoon(curcal.get(Calendar.YEAR), curcal.get(Calendar.MONTH), curcal.get(Calendar.DAY_OF_MONTH), full, next)
+        val cal=myUtils.NextMoon(curcal, full, next)
         val myString=custom_string+"%d.%d.%d".format(cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH)+1, cal.get(Calendar.YEAR))
         place.text=myString
     }

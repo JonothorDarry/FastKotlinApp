@@ -18,13 +18,15 @@ class YearCalculationsActivity : AppCompatActivity() {
         layout.removeAllViews()
         val zeiter = MoonGeta()
         var i = 0
-        var cal = zeiter.NextMoon(year, 0, 1, 1, 1)
+        //var cal = zeiter.NextMoon(year, 0, 1, 1, 1) //Nieprecyzjyjny algorytm
+        var cal = zeiter.NextMoon(year, 0, 1, 1, 1, 1)
 
         while (cal.get(Calendar.YEAR) == year && i < 1000) {
             val view = TextView(this)
             view.text = zeiter.GetDate(cal)
             layout.addView(view)
-            cal = zeiter.NextMoon(cal,1, 1)
+            //cal = zeiter.NextMoon(cal,1, 1) //Nieprecyzjyjny algorytm
+            cal = zeiter.NextMoon(cal,1, 1, 1)
             i++
         }
     }
